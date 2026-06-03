@@ -1,5 +1,4 @@
-from pydantic import BaseModel
-
+from pydantic import BaseModel, EmailStr, Field
 
 class BookCreate(BaseModel):
     title: str = Field(..., min_length=1)

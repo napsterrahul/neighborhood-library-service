@@ -14,6 +14,23 @@ A full-stack Neighborhood Library Service built using:
 
 ---
 
+# Architecture
+
+Frontend:
+React + TypeScript
+
+Backend:
+FastAPI + SQLAlchemy
+
+Database:
+PostgreSQL
+
+Communication:
+REST APIs over HTTP
+
+Documentation:
+Swagger/OpenAPI
+
 # Features
 
 ## Dashboard
@@ -151,6 +168,7 @@ Activate virtual environment:
 venv\Scripts\activate
 ```
 
+
 ### Linux / Mac
 
 ```bash
@@ -186,6 +204,13 @@ with your local PostgreSQL credentials.
 ```bash
 uvicorn app.main:app --reload
 ```
+
+if not worked then use 
+
+```
+venv\Scripts\python.exe -m uvicorn app.main:app --reload
+```
+
 
 Backend URL:
 
@@ -451,6 +476,31 @@ http://localhost:8000/docs
 - JWT Authentication
 - Automated Unit Tests
 - CI/CD Pipeline
+- Docker Support
+- Docker Compose
+
+
+# Application Screenshots
+
+## Dashboard
+
+![Dashboard](docs/screenshots/dashboard.png)
+
+## Books
+
+![Books](docs/screenshots/books.png)
+
+## Members
+
+![Members](docs/screenshots/members.png)
+
+## Borrow
+
+![Borrow](docs/screenshots/borrow.png)
+
+## Return / Borrow history
+
+![Return](docs/screenshots/return.png)
 
 # Author
 
