@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package neighborhoodlibrary;
+
+service LibraryService {
+  rpc GetBooks (Empty) returns (BookList);
+  rpc CreateBook (BookRequest) returns (BookResponse);
+  rpc BorrowBook (BorrowRequest) returns (BorrowResponse);
+  rpc ReturnBook (ReturnRequest) returns (BorrowResponse);
+}
+
+message Empty {}
+
+message BookRequest {
+  string title = 1;
+  string author = 2;
+  string isbn = 3;
+  int32 total_copies = 4;
+}
+
+message BookResponse {
+  int32 id = 1;
+  string title = 2;
+}
+
+message BookList {
+  repeated BookResponse books = 1;
+}
+
+message BorrowRequest {
+  int32 member_id = 1;
+  int32 book_id = 2;
+}
+
+message ReturnRequest {
+  int32 borrow_record_id = 1;
+}
+
+message BorrowResponse {
+  string message = 1;
+}
