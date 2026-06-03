@@ -4,18 +4,21 @@ frontend/node_modules/
 # Backend
 backend/venv/
 
-# Environment Files
-backend/.env
-frontend/.env
+# Environment files
+.env
+*.env
 
 # Python
 __pycache__/
 *.pyc
 
+# IDE
+.idea/
+.vscode/
+
 # Logs
 *.log
 
-# OS Files
+# OS
 .DS_Store
 Thumbs.db
-.idea/
