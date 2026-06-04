@@ -33,9 +33,35 @@ function Members() {
 
     const saveMember = async () => {
 
+        if (!form.full_name.trim()) {
+            toast.error("Member name is required");
+            return;
+        }
+
+        const emailRegex =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(form.email)) {
+            toast.error("Please enter a valid email");
+            return;
+        }
+
+        const phoneRegex =
+            /^[0-9]{10}$/;
+
+        if (!phoneRegex.test(form.phone)) {
+            toast.error(
+                "Phone number must be 10 digits"
+            );
+            return;
+        }
+
         await api.post(
             "/members/",
             form
+        );
+        toast.success(
+            "Member created successfully"
         );
 
         resetForm();
@@ -46,9 +72,35 @@ function Members() {
 
     const updateMember = async () => {
 
+        if (!form.full_name.trim()) {
+            toast.error("Member name is required");
+            return;
+        }
+
+        const emailRegex =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(form.email)) {
+            toast.error("Please enter a valid email");
+            return;
+        }
+
+        const phoneRegex =
+            /^[0-9]{10}$/;
+
+        if (!phoneRegex.test(form.phone)) {
+            toast.error(
+                "Phone number must be 10 digits"
+            );
+            return;
+        }
+
         await api.put(
             `/members/${editingId}`,
             form
+        );
+        toast.success(
+            "Member updated successfully"
         );
 
         resetForm();
@@ -159,6 +211,7 @@ function Members() {
                         <input
                             className="form-control"
                             placeholder="Email"
+                            type="email"
                             value={form.email}
                             onChange={(e) =>
                                 setForm({
@@ -176,6 +229,7 @@ function Members() {
                         <input
                             className="form-control"
                             placeholder="Phone"
+                            maxLength={10}
                             value={form.phone}
                             onChange={(e) =>
                                 setForm({

@@ -31,7 +31,29 @@ function Books() {
 
     const saveBook = async () => {
 
+        if (!form.title.trim()) {
+            toast.error("Book title is required");
+            return;
+        }
+
+        if (!form.author.trim()) {
+            toast.error("Author name is required");
+            return;
+        }
+
+        if (!form.isbn.trim()) {
+            toast.error("ISBN is required");
+            return;
+        }
+
+        if (form.total_copies < 1) {
+            toast.error("Total copies must be greater than 0");
+            return;
+        }
+
         await api.post("/books/", form);
+
+        toast.success("Book created successfully");
 
         resetForm();
 
@@ -40,11 +62,31 @@ function Books() {
     };
 
     const updateBook = async () => {
+        if (!form.title.trim()) {
+            toast.error("Book title is required");
+            return;
+        }
+
+        if (!form.author.trim()) {
+            toast.error("Author name is required");
+            return;
+        }
+
+        if (!form.isbn.trim()) {
+            toast.error("ISBN is required");
+            return;
+        }
+
+        if (form.total_copies < 1) {
+            toast.error("Total copies must be greater than 0");
+            return;
+        }
 
         await api.put(
             `/books/${editingId}`,
             form
         );
+        toast.success("Book updated successfully");
 
         resetForm();
 
@@ -184,6 +226,7 @@ function Books() {
                         <input
                             className="form-control"
                             type="number"
+                            min="1"
                             value={form.total_copies}
                             onChange={(e) =>
                                 setForm({

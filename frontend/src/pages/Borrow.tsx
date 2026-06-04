@@ -34,6 +34,15 @@ function Borrow() {
     };
 
     const borrowBook = async () => {
+        if (!memberId) {
+            toast.error("Please select a member");
+            return;
+        }
+
+        if (!bookId) {
+            toast.error("Please select a book");
+            return;
+        }
 
         try {
 
